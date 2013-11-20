@@ -58,8 +58,10 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
 
 LOGIN_REDIRECT_URL = "/profile"
 
-#SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['http://www.google.com/reader/api',
-#                                  'http://www.google.com/reader/atom/']
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+    'https://www.googleapis.com/auth/glass.timeline',
+    'https://www.googleapis.com/auth/glass.location',
+]
 
 AUTH_EXTRA_ARGUMENTS = {
     "access_type": "offline",
