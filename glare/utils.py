@@ -1,6 +1,7 @@
 from social.apps.django_app.utils import load_strategy
 from requests.exceptions import HTTPError
 import requests
+import uuid
 import json
 
 
@@ -33,15 +34,9 @@ def POST(user, url, headers=None, data=None):
 
     data['menuItems'] = [
         {
-            "id": 'delete',
-            "action": "Delete",
-            "values": [
-                {
-                    "displayName": "Delete",
-                }
-            ],
+            "id": str(uuid.uuid4()),
+            "action": "DELETE",
             "removeWhenSelected": True,
-            "payload": "Delete",
         }
     ]
 
