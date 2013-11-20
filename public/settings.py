@@ -1,4 +1,5 @@
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'secret'
 DEBUG = True
@@ -56,5 +57,12 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
 
 LOGIN_REDIRECT_URL = "/profile"
+
+#SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['http://www.google.com/reader/api',
+#                                  'http://www.google.com/reader/atom/']
+
+AUTH_EXTRA_ARGUMENTS = {
+    "access_type": "offline",
+}
 
 from local_settings import *
