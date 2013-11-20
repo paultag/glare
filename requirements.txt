@@ -1,3 +1,4 @@
 python-social-auth
 Django
 sunlight
+glass
