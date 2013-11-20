@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth.models import User
-from glare.utils import qjson
+from glare.utils import GET, POST
 
 
 class Command(BaseCommand):
@@ -9,4 +9,5 @@ class Command(BaseCommand):
 
     def handle(self, email, *args, **kwargs):
         u = User.objects.get(email=email)
-        print qjson(u, "https://www.googleapis.com/mirror/v1/locations/latest")
+        # print GET(u, "https://www.googleapis.com/mirror/v1/locations/latest")
+        print POST(u, "https://www.googleapis.com/mirror/v1/timeline", data={"text": "Foo"})
