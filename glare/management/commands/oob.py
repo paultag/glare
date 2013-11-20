@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth.models import User
 # from glare.utils import GET, POST
 from glass.social_auth import SocialGlassAPI
+import uuid
 
 
 class Command(BaseCommand):
@@ -13,4 +14,11 @@ class Command(BaseCommand):
         # print GET(u, "https://www.googleapis.com/mirror/v1/locations/latest")
         # print POST(u, "https://www.googleapis.com/mirror/v1/timeline", data={"text": "Foo"})
         api = SocialGlassAPI(u)
-        print api.get('locations/latest')
+        # print api.get('locations/latest')
+        print api.post("timeline", data={
+            "text": "Foo",
+            'menuItems': [
+                {"id": str(uuid.uuid4()), "action": "DELETE",
+                 "removeWhenSelected": True,}
+            ]
+        })
