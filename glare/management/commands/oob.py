@@ -9,4 +9,4 @@ class Command(BaseCommand):
 
     def handle(self, email, *args, **kwargs):
         u = User.objects.get(email=email)
-        print qjson(u, "/")
+        print qjson(u, "https://www.googleapis.com/mirror/v1/locations/latest")
