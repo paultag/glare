@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from glass.social_auth import SocialGlassAPI
 from glass.models import BoringGlassTimelineItem
 import uuid
+import sys
 
 
 class Command(BaseCommand):
@@ -12,10 +13,12 @@ class Command(BaseCommand):
 
     def handle(self, email, *args, **kwargs):
         u = User.objects.get(email=email)
-        # print GET(u, "https://www.googleapis.com/mirror/v1/locations/latest")
-        # print POST(u, "https://www.googleapis.com/mirror/v1/timeline", data={"text": "Foo"})
         api = SocialGlassAPI(u)
-        # print api.get('locations/latest')
+        timeline = api.get_timeline()
 
-        item = BoringGlassTimelineItem(text='test')
-        print api.post("timeline", data=item.to_obj())
+        # b = BoringGlassTimelineItem(text='testing')
+        # id = timeline.add_item(b)
+        # print id
+        # sys.stdin.readline()
+        # for item in timeline:
+        #     print timeline.delete_item(item.id)
