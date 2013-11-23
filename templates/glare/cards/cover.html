@@ -1,0 +1,15 @@
+<article>
+  <figure>
+    <img src="http://public.pault.ag/stuff/legislature.png" alt="" />
+  </figure>
+  <section>
+    <ul class="text-x-small">
+{% for legislator in legs %}
+      <li>{{legislator}}</li>
+{% endfor %}
+    </ul>
+  </section>
+  <footer>
+    <p>Congresscritters</p>
+  </footer>
+</article>
