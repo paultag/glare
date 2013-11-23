@@ -1,10 +1,10 @@
 <article>
     <figure>
-        <div style="background-image: url(http://static.openstates.org/photos/original/{{leg.leg_id}}.jpg); height: 100%; background-position: center"></div>
+        <div style="background-image: url(http://static.openstates.org/photos/original/{{leg.leg_id}}.jpg); height: 100%; background-position: center; background-size: cover;"></div>
     </figure>
     <section>
         <div>{{leg.full_name}}</div>
-        <div>{{leg.party}}</div>
+        <div class="{% if leg.party == "Democratic" %}blue{% elif leg.party == "Republican" %}red{% elif leg.party == "Green" %}green{% else %}grey{% endif %}" >{{leg.party}}</div>
         <div>{{leg.district}}</div>
     </section>
 </article>
