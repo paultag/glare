@@ -3,7 +3,15 @@
     <img src="http://public.pault.ag/stuff/legislature.png" alt="" />
   </figure>
   <section>
+
+{% comment %}
+    This is going to need to be adjusted based on the length
+    of the legislators.
+
     <ul class="text-x-small">
+{% endcomment %}
+
+    <ul class="text-medium">
 {% for legislator in legs %}
       <li>{{legislator}}</li>
 {% endfor %}
