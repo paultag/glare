@@ -23,22 +23,19 @@ class Command(BaseCommand):
         lobj = UserLocation.from_glass_location(u, latest)
         lobj.save()
 
-        #print lobj.point.coords
-        #print latest.lat
-
         lon, lat = lobj.point.coords
         legislators = openstates.legislator_geo_search(lat, lon)
 
-        #for item in timeline:
-        #    timeline.delete_item(item.id)
+        for item in timeline:
+            timeline.delete_item(item.id)
 
-        #state = legislators[0]['state'] if legislators else 'unknown'
+        state = legislators[0]['state'] if legislators else 'unknown'
 
-        #cover = LegislatorCoverItem(
-        #    legs=[x['full_name'] for x in legislators],
-        #    state=state,
-        #)
-        #id = timeline.add_item(cover)
-        #for legislator in legislators:
-        #    l = LegislatorTimelineItem(leg=legislator)
-        #    id = timeline.add_item(l)
+        cover = LegislatorCoverItem(
+            legs=[x['full_name'] for x in legislators],
+            state=state,
+        )
+        id = timeline.add_item(cover)
+        for legislator in legislators:
+            l = LegislatorTimelineItem(leg=legislator)
+            id = timeline.add_item(l)

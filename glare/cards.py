@@ -1,7 +1,7 @@
 from django.template.loader import get_template
 from django.template import Context
 
-from glass.models import DeletableGlassTimelineItem, NotifiableGlassTimelineItem
+from glass.models import DeletableGlassTimelineItem, NotifiableGlassTimelineItem, PinableGlassTimelineItem
 
 
 class TemplatedTimelineItem(DeletableGlassTimelineItem, NotifiableGlassTimelineItem):
