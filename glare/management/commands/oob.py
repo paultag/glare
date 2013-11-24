@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth.models import User
 from glass.social_auth import SocialGlassAPI
 from glare.cards import LegislatorTimelineItem, LegislatorCoverItem
+from glare.models import UserLocation
 from sunlight import openstates
 import uuid
 import sys
@@ -19,16 +20,25 @@ class Command(BaseCommand):
         location = api.get_location()
         latest = location.get_current_location()
 
-        legislators = openstates.legislator_geo_search(latest.lat, latest.lon)
+        lobj = UserLocation.from_glass_location(u, latest)
+        lobj.save()
 
-        for item in timeline:
-            timeline.delete_item(item.id)
+        #print lobj.point.coords
+        #print latest.lat
 
-        cover = LegislatorCoverItem(legs=[x['full_name'] for x in legislators])
-        id = timeline.add_item(cover)
-        print id
+        lon, lat = lobj.point.coords
+        legislators = openstates.legislator_geo_search(lat, lon)
 
-        for legislator in legislators:
-            l = LegislatorTimelineItem(leg=legislator)
-            id = timeline.add_item(l)
-            print id
+        #for item in timeline:
+        #    timeline.delete_item(item.id)
+
+        #state = legislators[0]['state'] if legislators else 'unknown'
+
+        #cover = LegislatorCoverItem(
+        #    legs=[x['full_name'] for x in legislators],
+        #    state=state,
+        #)
+        #id = timeline.add_item(cover)
+        #for legislator in legislators:
+        #    l = LegislatorTimelineItem(leg=legislator)
+        #    id = timeline.add_item(l)

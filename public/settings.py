@@ -32,8 +32,12 @@ WSGI_APPLICATION = 'public.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'glare',
+        'USER': 'glare',
+        'PASSWORD': 'glare',  # Don't deploy with these creds, people.
+        'HOST': '127.0.0.1',
+        'PORT': '5433',
     }
 }
 
