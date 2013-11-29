@@ -12,8 +12,8 @@
 {% endcomment %}
 
     <ul class="text-medium">
-{% for legislator in legs %}
-      <li>{{legislator}}</li>
+{% for leg in legs %}
+      <li class="{% if leg.party == "Democratic" %}blue{% elif leg.party == "Republican" %}red{% elif leg.party == "Green" %}green{% else %}grey{% endif %}" >{{leg.full_name}}</li>
 {% endfor %}
     </ul>
   </section>

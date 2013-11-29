@@ -32,9 +32,10 @@ class Command(BaseCommand):
         state = legislators[0]['state'] if legislators else 'unknown'
 
         cover = LegislatorCoverItem(
-            legs=[x['full_name'] for x in legislators],
+            legs=legislators,
             state=state,
         )
+
         id = timeline.add_item(cover)
         for legislator in legislators:
             l = LegislatorTimelineItem(leg=legislator)
