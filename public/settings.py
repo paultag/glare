@@ -37,7 +37,7 @@ DATABASES = {
         'USER': 'glare',
         'PASSWORD': 'glare',  # Don't deploy with these creds, people.
         'HOST': '127.0.0.1',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
 
